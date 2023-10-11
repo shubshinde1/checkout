@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="app.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="2xl:container bg-slate-100 mx-auto poppins font-bold py-5">
+    <div class="">
+        <h2 class="w-fit mx-auto text-xl flex">Checkout Form</h2>
+        <p class="w-fit mx-auto text-center font-light px-5 lg:px-20 my-5">Below is an example form built entirely with
+            Tailwind
+            CSS's form control. each required form group has a
+            validation state that can be <br>triggered by attempting to submit the form without completing it. </p>
+    </div>
+
+    <div class="flex flex-col lg:grid grid-cols-8 gap-5 px-5 mt-10">
+        <div></div>
+        <div class="col-span-4">
+
+            <h3 class="text-lg">Billing Address</h3>
+
+            <form class="my-5 flex flex-col" action="conection.php" method="post">
+                <div class="grid grid-cols-4 gap-5 text-sm">
+                    <div class="col-span-2">
+                        <label>First Name</label>
+                        <input type="text" name="fname" class="w-full h-10 border-2 rounded-md px-2 my-2 " required>
+                    </div>
+                    <div class="col-span-2">
+                        <label>Last Name</label>
+                        <input type="text" name="lname" class="w-full h-10  border-2 rounded-md px-2 my-2 " required>
+                    </div>
+                </div>
+
+                <div class="text-sm my-3 ">
+                    <div>
+                        <label>User Name</label>
+                        <div class="flex">
+                            <label
+                                class=" h-9 px-3 flex items-center my-auto bg-white rounded-s-md text-slate-600 border-2">
+                                @</label>
+                            <input type="text" name="username"
+                                class="w-full ml-3 h-10 float-left  border-2 rounded-md px-2 my-2 font-normal"
+                                placeholder="Username" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm my-3">
+                    <label>Email (Optional)</label>
+                    <div class="">
+                        <input type="text" name="email"
+                            class="w-full h-10 float-left  border-2 rounded-md px-2 my-2 font-normal"
+                            placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <div class="text-sm my-3">
+                    <label>Address</label>
+                    <div class="">
+                        <input type="text" name="address"
+                            class="w-full h-10 float-left  border-2 rounded-md px-2 my-2 font-normal"
+                            placeholder="1234 Main St" required>
+                    </div>
+                </div>
+
+                <div class="text-sm my-3">
+                    <label>Address 2 (Optional)</label>
+                    <div class="">
+                        <input type="text" name="address2"
+                            class="w-full h-10 float-left  border-2 rounded-md px-2 my-2 font-normal"
+                            placeholder="Apartment or suite">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 md:grid-cols-5 gap-5 text-sm">
+                    <div class="col-span-2">
+                        <label for="country-select">Country</label>
+                        <select id="country-select" name="country" name="Country" onchange="updateStateDropdown()"
+                            class="w-full h-10 border-2 rounded-md px-2 my-2">
+                            <option value="">Select a country</option>
+                            <option value="India">India</option>
+                            <option value="US">US</option>
+                            <option value="UK">UK</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Japan">Japan</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2">
+                        <label for="state-select">State</label>
+                        <select id="state-select" name="state" name="state"
+                            class="w-full h-10 border-2 rounded-md px-2 my-2">
+                            <option value="">Select country first</option>
+                        </select>
+                    </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <label>Zip</label>
+                        <input id="zip" name="zip" type="number" class="w-full h-10  border-2 rounded-md px-2 my-2 "
+                            required>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="flex flex-col font-normal text-sm">
+                    <div class="flex">
+                        <input type="checkbox" name="checkbox[]" value="option 1" id="option1" checked="checked"
+                            class="">
+                        <label class="container ml-3">Shipping address is the same as my billing address</label>
+                    </div>
+
+                    <div class="flex mt-3 md:mt-2">
+                        <input type="checkbox" name="checkbox[]" value="option 2" id="option2" checked="checked"
+                            class="">
+                        <label class="container ml-3">Save this information for next time</label>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div>
+                    <h3 class="text-lg">Payment</h3>
+                    <div class="flex flex-col font-normal text-sm my-3 ">
+                        <div class="flex">
+                            <input type="radio" checked="" name="radio" class="">
+                            <label class="container ml-3">Credit card</label>
+                        </div>
+
+                        <div class="flex mt-3 md:mt-2">
+                            <input type="radio" checked="" name="radio" class="">
+                            <label class="container ml-3">Debit card</label>
+                        </div>
+                        <div class="flex mt-3 md:mt-2">
+                            <input type="radio" checked="" name="radio" class="">
+                            <label class="container ml-3">Paypal</label>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+
+                    <div class="grid grid-cols-4 gap-5 text-sm my-3">
+                        <div class="col-span-2">
+                            <label>Name on card</label>
+                            <input type="text" name="cardname" class="w-full h-10 border-2 rounded-md px-2 my-2 "
+                                required>
+                            <h6 class="text-xs">Full name as displayed on card</h6>
+                        </div>
+                        <div class="col-span-2">
+                            <label>Credit card number</label>
+                            <input type="number" name="cardnumber" class="w-full h-10  border-2 rounded-md px-2 my-2 "
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-5 text-sm my-5">
+                        <div class="col-span-2 md:col-span-1">
+                            <label>Expiry date</label>
+                            <input type="date" name="date" class="w-full h-10 border-2 rounded-md px-2 my-2 " required>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <label>CVV</label>
+                            <input type="number" name="cvv" class="w-full h-10 border-2 rounded-md px-2 my-2 " required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="button" name="send"
+                            class="w-full h-10 bg-blue-500 rounded-md px-2 my-2 text-white hover:scale-[1.010] duration-500"
+                            value="Continue to checkout">
+                    </div>
+
+
+
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="col-span-2 ">
+            <h3 class="text-lg">Your cart</h3>
+            <div class="flex px-3 py-2 my-3 border-2 bg-white rounded-md hover:scale-105 duration-500">
+                <img src="img/shoe.png" class="h-12 rounded-md shadow-lg" alt="">
+                <div class="mx-3 my-auto ">
+                    <h3 class="text-sm">Puma sport shoe</h3>
+                    <h4 class="text-xs">Size: UK-9</h4>
+                </div>
+                <h4 class="my-auto text-sm text-green-500  ml-20 sm:ml-10 md:ml-20">1500 Rs</h4>
+            </div>
+
+            <div class="flex px-3 py-2 my-3 border-2 bg-white rounded-md hover:scale-105 duration-500">
+                <div class="mx-3 my-auto">
+                    <h3 class="text-sm">Total</h3>
+                </div>
+                <h4 class="my-auto text-sm text-green-500 ml-52 lg:ml-32 xl:ml-52">1500 Rs</h4>
+            </div>
+        </div>
+
+        <div></div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        const stateData = {
+            India: ["Andhra Pradesh",
+                "Arunachal Pradesh",
+                "Assam",
+                "Bihar",
+                "Chhattisgarh",
+                "Goa",
+                "Gujarat",
+                "Haryana",
+                "Himachal Pradesh",
+                "Jharkhand",
+                "Karnataka",
+                "Kerala",
+                "Madhya Pradesh",
+                "Maharashtra",
+                "Manipur",
+                "Meghalaya",
+                "Mizoram",
+                "Nagaland",
+                "Odisha",
+                "Punjab",
+                "Rajasthan",
+                "Sikkim",
+                "Tamil Nadu",
+                "Telangana",
+                "Tripura",
+                "Uttar Pradesh",
+                "Uttarakhand",
+                "West Bengal"],
+            US: ["Alabama",
+                "Alaska",
+                "Arizona",
+                "Arkansas",
+                "California",
+                "Colorado",
+                "Connecticut",
+                "Delaware",
+                "Florida",
+                "Georgia",
+                "Hawaii",
+                "Idaho",
+                "Illinois",
+                "Indiana",
+                "Iowa",
+                "Kansas",
+                "Kentucky",
+                "Louisiana",
+                "Maine",
+                "Maryland",
+                "Massachusetts",
+                "Michigan",
+                "Minnesota",
+                "Mississippi",
+                "Missouri",
+                "Montana",
+                "Nebraska",
+                "Nevada",
+                "New Hampshire",
+                "New Jersey",
+                "New Mexico",
+                "New York",
+                "North Carolina",
+                "North Dakota",
+                "Ohio",
+                "Oklahoma",
+                "Oregon",
+                "Pennsylvania",
+                "Rhode Island",
+                "South Carolina",
+                "South Dakota",
+                "Tennessee",
+                "Texas",
+                "Utah",
+                "Vermont",
+                "Virginia",
+                "Washington",
+                "West Virginia",
+                "Wisconsin",
+                "Wyoming"],
+            UK: ["East Midlands",
+                "East of England",
+                "London",
+                "North East",
+                "North West",
+                "South East",
+                "South West",
+                "West Midlands",
+                "Yorkshire and the Humber",
+                "Aberdeen City",
+                "Aberdeenshire",
+                "Angus",
+                "Argyll and Bute",
+                "Clackmannanshire",
+                "Dumfries and Galloway",
+                "Dundee City",
+                "East Ayrshire",
+                "East Dunbartonshire",
+                "East Lothian",
+                "East Renfrewshire",
+                "Edinburgh, City of",
+                "Eilean Siar",
+                "Falkirk",
+                "Fife",
+                "Glasgow City",
+                "Highland",
+                "Inverclyde",
+                "Midlothian",
+                "Moray",
+                "North Ayrshire",
+                "North Lanarkshire",
+                "Orkney Islands",
+                "Perth and Kinross",
+                "Renfrewshire",
+                "Scottish Borders, The",
+                "Shetland Islands",
+                "South Ayrshire",
+                "South Lanarkshire",
+                "Stirling",
+                "West Dunbartonshire",
+                "West Lothian",
+                "Blaenau Gwent",
+                "Bridgend",
+                "Caerphilly",
+                "Cardiff",
+                "Carmarthenshire",
+                "Ceredigion",
+                "Conwy",
+                "Denbighshire",
+                "Flintshire",
+                "Gwynedd",
+                "Isle of Anglesey",
+                "Merthyr Tydfil",
+                "Monmouthshire",
+                "Neath Port Talbot",
+                "Newport",
+                "Pembrokeshire",
+                "Powys",
+                "Rhondda Cynon Taf",
+                "Swansea",
+                "Torfaen",
+                "Vale of Glamorgan, The",
+                "Wrexham",
+                "Antrim and Newtownabbey",
+                "Ards and North Down",
+                "Armagh City, Banbridge and Craigavon",
+                "Belfast",
+                "Causeway Coast and Glens",
+                "Derry and Strabane",
+                "Fermanagh and Omagh",
+                "Lisburn and Castlereagh",
+                "Mid and East Antrim",
+                "Mid Ulster",
+                "Newry, Mourne and Down"
+            ],
+            Germany: ["Baden-Württemberg",
+                "Bavaria (Bayern)",
+                "Berlin",
+                "Brandenburg",
+                "Bremen",
+                "Hamburg",
+                "Hesse (Hessen)",
+                "Lower Saxony (Niedersachsen)",
+                "Mecklenburg-Vorpommern",
+                "North Rhine-Westphalia (Nordrhein-Westfalen)",
+                "Rhineland-Palatinate (Rheinland-Pfalz)",
+                "Saarland",
+                "Saxony (Sachsen)",
+                "Saxony-Anhalt (Sachsen-Anhalt)",
+                "Schleswig-Holstein",
+                "Thuringia (Thüringen)"],
+            Denmark: ["Capital Region of Denmark (Region Hovedstaden)",
+                "Central Denmark Region (Region Midtjylland)",
+                "North Denmark Region (Region Nordjylland)",
+                "Region Zealand (Region Sjælland)",
+                "Southern Denmark Region (Region Syddanmark)"],
+            Japan: [
+                "Hokkaido",
+                "Aomori",
+                "Iwate",
+                "Miyagi",
+                "Akita",
+                "Yamagata",
+                "Fukushima",
+                "Ibaraki",
+                "Tochigi",
+                "Gunma",
+                "Saitama",
+                "Chiba",
+                "Tokyo",
+                "Kanagawa",
+                "Niigata",
+                "Toyama",
+                "Ishikawa",
+                "Fukui",
+                "Yamanashi",
+                "Nagano",
+                "Gifu",
+                "Shizuoka",
+                "Aichi",
+                "Mie",
+                "Shiga",
+                "Kyoto",
+                "Osaka",
+                "Hyogo",
+                "Nara",
+                "Wakayama",
+                "Tottori",
+                "Shimane",
+                "Okayama",
+                "Hiroshima",
+                "Yamaguchi",
+                "Tokushima",
+                "Kagawa",
+                "Ehime",
+                "Kochi",
+                "Fukuoka",
+                "Saga",
+                "Nagasaki",
+                "Kumamoto",
+                "Oita",
+                "Miyazaki",
+                "Kagoshima",
+                "Okinawa"
+            ]
+        };
+
+        function updateStateDropdown() {
+            const countrySelect = document.getElementById("country-select");
+            const stateSelect = document.getElementById("state-select");
+
+            const selectedCountry = countrySelect.value;
+            const states = stateData[selectedCountry] || [];
+
+            // Clear existing options
+            stateSelect.innerHTML = '';
+
+            // Add options for the selected country
+            if (states.length > 0) {
+                states.forEach(state => {
+                    const option = document.createElement("option");
+                    option.value = state;
+                    option.textContent = state;
+                    stateSelect.appendChild(option);
+                });
+            } else {
+                const option = document.createElement("option");
+                option.textContent = "No states available for this country";
+                stateSelect.appendChild(option);
+            }
+        }
+
+    </script>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
