@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body class="2xl:container bg-slate-100 mx-auto poppins font-bold py-10">
+
+    <div class="max-w-md sm:mx-auto bg-white p-6 mx-5 rounded-lg shadow-lg">
+        <img src="img/ashoes.jpg" alt="Puma Shoe" class="mb-4 mx-auto">
+        <h2 class="text-xl font-bold mb-2">Addidas Running Shoe</h2>
+        <p class="text-gray-700 text-sm my-2">Size: 8 | Color: whiteorange</p>
+        <h2 class="text-red-500 my-3">Price: 2500 Rs</h2>
+        <button class="bg-green-500 text-white rounded-md px-4 py-2 mr-2 hover:scale-[1.05] duration-500"
+            onclick="addToOrder()">Add to my order</button>
+        <button class="bg-red-500 text-white rounded-md px-4 mt-3 md:mt-0 py-2 hover:scale-[1.05] duration-500"
+            onclick="redirectToNextPage()">No, thank you</button>
+    </div>
+
+    <script>
+        function addToOrder() {
+            const productDetails = {
+                name: 'Addidas Running Shoe',
+                price: '2500rs',
+                size: '8',
+                color: 'whiteorange',
+                img: "img/ashoes.jpg"
+            };
+
+            sessionStorage.setItem('productDetails', JSON.stringify(productDetails));
+            console.log(productDetails);
+
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'order.php', true);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log('Product added to order:', xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify(productDetails));
+            window.location.href = 'ty.html'; 
+        }
+        function redirectToNextPage() {
+            window.location.href = 'ty.html'; 
+        }
+    </script>
+
+
+</body>
+
+</html>

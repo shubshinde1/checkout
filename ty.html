@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="app.css">
+
+</head>
+
+<body class="2xl:container mx-auto poppins font-bold py-10">
+    <div class="bg-slate-100  w-fit mx-auto p-5" id="productDetails">
+        <!-- <h1 class="text-7xl">Thank You</h1> -->
+    </div>
+
+    <script>
+        // Retrieve productDetails from sessionStorage
+        const storedProductDetails = sessionStorage.getItem('productDetails');
+        const productDetails = JSON.parse(storedProductDetails);
+
+        if (productDetails) {
+            const productDetailsElement = document.getElementById('productDetails');
+            productDetailsElement.innerHTML = `
+            <h1 class="text-7xl w-fit mx-auto">Thank You</h1>
+            <div class="w-auto mt-5 mx-auto bg-white rounded-md flex flex-col justify-center">
+                <img src="${productDetails.img}" class="w-56 mx-auto" alt="${productDetails.name}">
+                <h2 class="mx-3">${productDetails.name}</h2>
+                <p class="mx-3">Size: ${productDetails.size} | Color: ${productDetails.color}</p>
+                <h2 class="mx-3 mb-3">${productDetails.price}</h2>
+                </div>
+            `;
+        } else {
+            console.log('No product details found in sessionStorage.');
+        }
+
+    </script>
+</body>
+
+</html>
