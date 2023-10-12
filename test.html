@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="final.css">
+    <!-- <link rel="stylesheet" href="app.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="2xl:container bg-slate-100 mx-auto poppins font-bold py-5">
@@ -23,8 +24,8 @@
 
             <h3 class="text-lg">Billing Address</h3>
 
-            <form class="my-5 flex flex-col" action="_con.php" method="post" enctype="multipart/form-data"
-                onsubmit="return validateContactForm()">
+            <form class="my-5 flex flex-col" action="con.php" method="post" enctype="multipart/form-data"
+            onsubmit="return validateContactForm()">
                 <div class="grid grid-cols-4 gap-5 text-sm">
                     <div class="col-span-2">
                         <label>First Name</label>
@@ -93,7 +94,8 @@
                     </div>
                     <div class="col-span-2">
                         <label for="state-select">State</label>
-                        <select id="state-select" name="state" class="w-full h-10 border-2 rounded-md px-2 my-2">
+                        <select id="state-select" name="state" 
+                            class="w-full h-10 border-2 rounded-md px-2 my-2">
                             <option value="">Select country first</option>
                         </select>
                     </div>
@@ -106,19 +108,19 @@
 
                 <hr class="my-4">
 
-                <div class="flex flex-col font-normal text-sm">
+                 <div class="flex flex-col font-normal text-sm">
                     <div class="flex">
-                        <input type="checkbox" name="checkbox"
-                            value="Shipping address is the same as my billing address" id="option1" class="">
+                        <input type="checkbox" name="checkbox" value="Shipping address is the same as my billing address" id="option1" 
+                            class="">
                         <label class="container ml-3">Shipping address is the same as my billing address</label>
                     </div>
 
                     <div class="flex mt-3 md:mt-2">
-                        <input type="checkbox" name="checkbox" value="Save this information for next time" id="option2"
+                        <input type="checkbox" name="checkbox" value="Save this information for next time" id="option2" 
                             class="">
                         <label class="container ml-3">Save this information for next time</label>
                     </div>
-                </div>
+                </div> 
 
                 <hr class="my-4">
 
@@ -169,9 +171,9 @@
                     </div>
 
                     <div>
-                        <a href="prod1.html"> <input type="submit" name="send"
-                                class="w-full h-10 bg-blue-500 rounded-md px-2 my-2 text-white hover:scale-[1.010] duration-500"
-                                value="Continue to checkout">
+                       <a href="add.html"> <input type="submit" name="send" 
+                            class="w-full h-10 bg-blue-500 rounded-md px-2 my-2 text-white hover:scale-[1.010] duration-500"
+                            value="Continue to checkout">
                         </a>
                     </div>
 
@@ -206,53 +208,73 @@
     </div>
 
     <script>
+        // Get the credit card number input element
         const cardNumberInput = document.querySelector('input[name="cardnumber"]');
-
+        
+        // Add an input event listener to the input element
         cardNumberInput.addEventListener('input', function () {
+            // Remove any non-numeric characters (e.g., spaces or dashes)
             const cardNumber = this.value.replace(/\D/g, '');
-
+    
+            // Check if the card number has exactly 16 digits
             if (cardNumber.length !== 16) {
                 this.setCustomValidity('Credit card number must be 16 digits');
             } else {
-                this.setCustomValidity(''); 
+                this.setCustomValidity(''); // Reset the validation message
             }
         });
     </script>
-    <script>
-        const cvvInput = document.querySelector('input[name="cvv"]');
+  <script>
+    // Get the CVV input element
+    const cvvInput = document.querySelector('input[name="cvv"]');
 
-        cvvInput.addEventListener('input', function () {
-            let cvv = this.value.replace(/\D/g, '');
+    // Add an input event listener to the CVV input
+    cvvInput.addEventListener('input', function () {
+        // Get the input value and remove any non-numeric characters
+        let cvv = this.value.replace(/\D/g, '');
 
-            this.value = cvv;
+        // Ensure that the CVV contains only numbers
+        this.value = cvv;
 
-            if (cvv.length === 3) {
-                this.setCustomValidity('');
-            } else {
-                this.setCustomValidity('CVV must contain 3 digits.');
-            }
-        });
-    </script>
-
-    <script>
-        function validateZip() {
-            const zipInput = document.getElementById('zip');
-            const zipValue = zipInput.value;
-
-            const zipPattern = /^\d{6}$/;
-
-            if (!zipPattern.test(zipValue)) {
-                alert("ZIP code must be exactly 6 digits.");
-                zipInput.value = ''; 
-            }
+        // Check if the CVV contains exactly 3 digits
+        if (cvv.length === 3) {
+            // If it's valid, remove any validation message
+            this.setCustomValidity('');
+        } else {
+            // If it's not valid, set a custom validation message
+            this.setCustomValidity('CVV must contain 3 digits.');
         }
+    });
+</script>
 
-        // Attach the validation function to the input's blur event (when it loses focus)
+<script>
+    function validateZip() {
         const zipInput = document.getElementById('zip');
-        zipInput.addEventListener('blur', validateZip);
-    </script>
+        const zipValue = zipInput.value;
+
+        // Use a regular expression to check if the input consists of exactly 6 digits
+        const zipPattern = /^\d{6}$/;
+
+        if (!zipPattern.test(zipValue)) {
+            // If the input doesn't match the pattern, display an error message
+            alert("ZIP code must be exactly 6 digits.");
+            zipInput.value = ''; // Clear the input field
+        }
+    }
+
+    // Attach the validation function to the input's blur event (when it loses focus)
+    const zipInput = document.getElementById('zip');
+    zipInput.addEventListener('blur', validateZip);
+</script>
 
 
+
+
+    
+    
+    
+
+    <!-- <script src="script.js"></script> -->
     <script>
         const stateData = {
             India: ["Andhra Pradesh",
@@ -506,8 +528,9 @@
         }
 
     </script>
-
+    <!-- Code injected by live-server -->
     <script>
+        // <![CDATA[  <-- For SVG support
         if ('WebSocket' in window) {
             (function () {
                 function refreshCSS() {
@@ -543,8 +566,9 @@
         }
         // ]]>
     </script>
-
+    <!-- Code injected by live-server -->
     <script>
+        // <![CDATA[  <-- For SVG support
         if ('WebSocket' in window) {
             (function () {
                 function refreshCSS() {
@@ -578,6 +602,7 @@
         else {
             console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
         }
+        // ]]>
     </script>
 </body>
 

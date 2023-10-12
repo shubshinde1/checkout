@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="final.css">
 </head>
 
 <body class="2xl:container bg-slate-100 mx-auto poppins font-bold py-10">
@@ -36,7 +36,7 @@
 
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'order.php', true);
+            xhr.open('POST', 'datacon.php', true);
             xhr.setRequestHeader('Content-type', 'application/json');
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
